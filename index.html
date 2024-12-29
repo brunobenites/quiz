@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Cuzinho hoje?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .button {
+            padding: 20px;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .hidden {
+            visibility: hidden;
+        }
+
+        .message {
+            font-size: 24px;
+            color: #d9534f;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Você quer cuzinho hoje?</h1>
+    <div class="button-container">
+        <button id="naoBtn" class="button">Não</button>
+        <button id="simBtn" class="button">Sim</button>
+    </div>
+    <div id="message" class="message hidden"></div>
+
+    <script>
+        let simBtn = document.getElementById('simBtn');
+        let naoBtn = document.getElementById('naoBtn');
+        let message = document.getElementById('message');
+
+        // Função para mover o botão "Não"
+        function moverNao() {
+            let randomX = Math.random() * (window.innerWidth - 200);
+            let randomY = Math.random() * (window.innerHeight - 100);
+            naoBtn.style.position = 'absolute';
+            naoBtn.style.left = randomX + 'px';
+            naoBtn.style.top = randomY + 'px';
+        }
+
+        // Quando "Não" for clicado, move o botão
+        naoBtn.addEventListener('click', () => {
+            moverNao();
+        });
+
+        // Quando "Sim" for clicado, mostra a mensagem
+        simBtn.addEventListener('click', () => {
+            message.textContent = 'Credo, que delícia!';
+            message.classList.remove('hidden');
+            naoBtn.disabled = true;  // Desabilita o botão "Não"
+            simBtn.disabled = true;  // Desabilita o botão "Sim"
+        });
+    </script>
+</body>
+</html>
